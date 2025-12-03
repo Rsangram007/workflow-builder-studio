@@ -2,8 +2,6 @@
 
 A visual workflow designer module for HR administrators to create and test internal workflows such as onboarding, leave approval, and document verification.
 
-![HR Workflow Designer](https://lovable.dev/opengraph-image-p98pqg.png)
-
 ## 🚀 Quick Start
 
 ```bash
@@ -19,6 +17,7 @@ The application will be available at `http://localhost:8080`
 ## 📋 Features
 
 ### Workflow Canvas (React Flow)
+
 - **5 Node Types**: Start, Task, Approval, Automated Step, and End nodes
 - **Drag-and-Drop**: Drag nodes from the sidebar onto the canvas
 - **Connect Nodes**: Click and drag from node handles to create connections
@@ -29,33 +28,37 @@ The application will be available at `http://localhost:8080`
 - **Mini Map**: Navigate large workflows easily
 
 ### Node Configuration Forms
+
 Each node type has a dedicated configuration panel with type-specific fields:
 
-| Node Type | Fields |
-|-----------|--------|
-| **Start** | Title, Metadata key-value pairs |
-| **Task** | Title*, Description, Assignee, Due Date, Custom Fields |
-| **Approval** | Title, Approver Role (dropdown), Auto-approve Threshold |
-| **Automated** | Title, Action (from API), Dynamic Parameters |
-| **End** | End Message, Show Summary toggle |
+| Node Type     | Fields                                                  |
+| ------------- | ------------------------------------------------------- |
+| **Start**     | Title, Metadata key-value pairs                         |
+| **Task**      | Title\*, Description, Assignee, Due Date, Custom Fields |
+| **Approval**  | Title, Approver Role (dropdown), Auto-approve Threshold |
+| **Automated** | Title, Action (from API), Dynamic Parameters            |
+| **End**       | End Message, Show Summary toggle                        |
 
 ### Mock API Layer
+
 - `GET /automations` - Returns available automated actions with their parameters
 - `POST /simulate` - Accepts workflow JSON and returns step-by-step execution
 
 ### Workflow Testing/Sandbox
+
 - Serialize and validate workflow structure
 - Step-by-step execution animation
 - Visual timeline of execution
 - Error and warning display
 
 ### Import/Export
+
 - Export workflows as JSON
 - Import previously saved workflows
 
 ## 🏗️ Architecture
 
-```
+```text
 src/
 ├── api/
 │   └── mockApi.ts           # Mock API layer for automations and simulation
@@ -94,20 +97,24 @@ src/
 ## 🎨 Design Decisions
 
 ### State Management
+
 - **React Context + Hooks**: Chose React Context for global workflow state over Redux for simplicity and because the state is localized to the workflow designer
 - **Controlled Components**: All form inputs are controlled for predictable state updates
 - **Separation of Concerns**: Canvas logic, node logic, and API logic are cleanly separated
 
 ### Component Architecture
+
 - **Custom Nodes**: Each node type is a separate component for maintainability
 - **Form Components**: Each node type has its own form component with type-specific validation
-- **Reusable UI**: Leverages shadcn/ui components for consistent styling
+- **Reusable UI**: Leverages `shadcn/ui` components for consistent styling
 
 ### Type Safety
+
 - **Discriminated Unions**: Node data types use discriminated unions for type-safe node handling
 - **Strict TypeScript**: Full type coverage for all components and functions
 
 ### Scalability Considerations
+
 - **Node Type Extension**: Adding new node types requires:
   1. Add type to `NodeType` union
   2. Create node data interface
@@ -119,6 +126,7 @@ src/
 ## 🧪 Workflow Validation
 
 The system validates:
+
 - ✅ Exactly one Start node required
 - ✅ At least one End node required
 - ✅ All nodes must be connected
@@ -129,11 +137,11 @@ The system validates:
 ## 📦 Tech Stack
 
 - **React 18** - UI framework
-- **React Flow (@xyflow/react)** - Node-based graph visualization
+- **React Flow (@`xyflow/react`)** - Node-based graph visualization
 - **TypeScript** - Type safety
 - **Tailwind CSS** - Styling
-- **shadcn/ui** - Component library
-- **Vite** - Build tool
+- **`shadcn/ui`** - Component library
+- **`Vite`** - Build tool
 - **TanStack Query** - Data fetching (available for future API integration)
 
 ## 🔮 Future Enhancements
@@ -141,7 +149,7 @@ The system validates:
 With more time, I would add:
 
 1. **Undo/Redo** - History stack for canvas operations
-2. **Auto-Layout** - Automatic node positioning using dagre
+2. **Auto-Layout** - Automatic node positioning using dagger
 3. **Node Templates** - Pre-built workflow templates
 4. **Visual Validation Errors** - Show errors directly on nodes
 5. **Conditional Branching** - Support for decision nodes
@@ -161,7 +169,7 @@ With more time, I would add:
 
 ## 🧑‍💻 Author
 
-Built with [Lovable](https://lovable.dev)
+---
 
 ---
 
